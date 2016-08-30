@@ -88,12 +88,12 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = { from: Rails.application.secrets.from }
 
-  Rails.application.config.middleware.use ExceptionNotification::Rack,
-                                          email: {
-                                            email_prefix: '[ERRORS] ',
-                                            sender_address: %{ 'errors' <errors@simplexmobility.com> },
-                                            exception_recipients: %w(e.lavretskiy@yandex.ru)
-                                          }
+  # Rails.application.config.middleware.use ExceptionNotification::Rack,
+  #                                         email: {
+  #                                           email_prefix: '[ERRORS] ',
+  #                                           sender_address: %{ 'errors' <errors@simplexmobility.com> },
+  #                                           exception_recipients: %w(e.lavretskiy@yandex.ru)
+  #                                         }
 
   config.serve_static_files = true
   config.assets.compress = true
