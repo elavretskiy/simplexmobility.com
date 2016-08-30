@@ -50,6 +50,19 @@
     margin: 0px 0px 10px 0px;
     padding-top: 0;
   }
+
+  strong {
+    clear: both;
+    display: block;
+    font: 700 14px "Arimo", Arial, sans-serif;
+    margin: 0px auto 0;
+    padding: 28px 5px;
+    text-decoration: none;
+    color: #777;
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+  }
 }
 
 .specs-photo-main {
