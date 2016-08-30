@@ -1,0 +1,157 @@
+ru:
+  boolean:
+    "true": Да
+    "false": Нет
+    "1": Да
+    "0": Нет
+  roles:
+    is_super: Супер
+    is_admin: Админ
+    is_demo: Демо
+    is_license: Лицензия
+  states:
+    not_active: Неактивно
+    is_up: UP
+    is_archive: Архив
+  flash:
+    actions:
+      create:
+        notice: Запись успешно сохранена
+      update:
+        notice: Запись успешно обновлена
+      destroy:
+        notice: Запись успешно удалена
+        alert: Запись не может быть удалена
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            phone:
+              validates_phone_msg: 'имеет не верный формат: yyXXXXXXX - yy-код, XXXXXXX-номер'
+    successful:
+      messages:
+        created: Запись успешно сохранена
+        updated: Запись успешно обновлена
+        destroyed: Запись успешно удалена
+    models:
+      user:
+        one: Пользователь
+        few: Пользователя
+        many: Пользователи
+        other: Пользователей
+      platform:
+        one: Площадка
+        few: Площадки
+        many: Площадки
+        other: Площадок
+      account:
+        one: Аккаунт
+        few: Аккаунта
+        many: Аккаунты
+        other: Аккаунтов
+      onliner_ad:
+        one: Объявление Барахолки
+        few: Объявление Барахолки
+        many: Объявления Барахолки
+        other: Объявления Барахолки
+      onliner_car:
+        one: Объявление Автобарахолки
+        few: Объявление Автобарахолки
+        many: Объявления Автобарахолки
+        other: Объявления Автобарахолки
+      onliner_motorbike:
+        one: Объявление Мотбарахолки
+        few: Объявление Мотобарахолки
+        many: Объявления Мотобарахолки
+        other: Объявления Мотобарахолки
+      onliner_sale_apartment:
+        one: Объявление Продажи недвижимости
+        few: Объявление Продажи недвижимости
+        many: Объявления Продажи недвижимости
+        other: Объявления Продажи недвижимости
+      onliner_rent_apartment:
+        one: Объявление Аренды недвижимости
+        few: Объявление Аренды недвижимости
+        many: Объявления Аренды недвижимости
+        other: Объявления Аренды недвижимости
+    attributes:
+      user:
+        email: E-mail
+        password: Новый пароль
+        password_confirmation: Подтверждение пароля
+        current_password: Текущий пароль
+        phone: Телефон
+        role: Роль
+        id: ID
+      profile:
+        email: E-mail
+        password: Новый пароль
+        password_confirmation: Подтверждение пароля
+        current_password: Текущий пароль
+        phone: Телефон
+        role: Роль
+        id: ID
+      platform:
+        id: ID
+        name: Название
+        service: Сервис
+      account:
+        id: ID
+        username: Логин
+        current_password: Пароль (Будет сохранен в зашифрованном виду)
+        current_password_confirmation: Подтверждение пароля
+        platform_id: Площадка
+        user_id: Пользователь
+        system_id: Системный ID
+        synced_at: Синхронизирован
+      onliner_ad:
+        id: ID
+        state: Состояние
+        text: Краткое описание
+        title: Заголовок
+        system_id: Системный ID
+        account_id: Аккаунт
+        user_id: Пользователь
+        up_at: Время UP
+        upped_at: Поднято
+      onliner_car:
+        id: ID
+        state: Состояние
+        text: Краткое описание
+        title: Заголовок
+        system_id: Системный ID
+        account_id: Аккаунт
+        user_id: Пользователь
+        up_at: Время UP
+        upped_at: Поднято
+      onliner_motorbike:
+        id: ID
+        state: Состояние
+        text: Краткое описание
+        title: Заголовок
+        system_id: Системный ID
+        account_id: Аккаунт
+        user_id: Пользователь
+        up_at: Время UP
+        upped_at: Поднято
+      onliner_sale_apartment:
+        id: ID
+        state: Состояние
+        text: Краткое описание
+        title: Заголовок
+        system_id: Системный ID
+        account_id: Аккаунт
+        user_id: Пользователь
+        up_at: Время UP
+        upped_at: Поднято
+      onliner_rent_apartment:
+        id: ID
+        state: Состояние
+        text: Краткое описание
+        title: Заголовок
+        system_id: Системный ID
+        account_id: Аккаунт
+        user_id: Пользователь
+        up_at: Время UP
+        upped_at: Поднято

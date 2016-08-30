@@ -1,0 +1,29 @@
+test:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: simplexmobility_test
+  pool:     5
+  username: lavrik
+  password:
+  template: template0
+
+development:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: simplexmobility_development
+  pool:     5
+  username: lavrik
+  password:
+  template: template0
+
+production:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: simplexmobility_production
+  pool:     5
+  username: lavrik
+  password:
+  template: template0

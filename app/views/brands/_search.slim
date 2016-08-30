@@ -1,0 +1,8 @@
+.col-md-12 ng-controller='SearchCtrl'
+  .input-group.form-group
+    = text_field_tag :search, nil, class: 'form-control', placeholder: 'Поиск', 'ng-model' => 'query', 'ng-keypress' => '($event.which === 13) ? search() : 0'
+    .input-group-btn
+      = submit_tag 'Искать', class: 'btn btn-primary btn-flat', 'data-ng-click' => 'search()'
+
+.col-md-12 ng-controller='SearchCtrl'
+  .search-results ng-bind-html='result.collection'

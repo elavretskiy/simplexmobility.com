@@ -1,0 +1,4 @@
+.col-md-6.form-group
+  select.form-control ng-model='phone' ng-change='show_phone()' ng-controller='PhonesCtrl'
+    option ng-repeat='phone in phones.collection' value='{{phone.url}}'
+      | {{phone.name}}

@@ -1,0 +1,10 @@
+.col-md-12
+  .form-group
+    a ng-click='ctrl.create()' class='btn btn-primary btn-sm'
+      = 'Обновить список брендов '
+      i.glyphicon.glyphicon-refresh
+.col-md-6
+  .form-group
+    select.form-control ng-model='brand' ng-change='load_phones()' ng-controller='PhonesCtrl'
+      option ng-repeat='brand in ctrl.brands.collection' value='{{brand.url}}'
+        | {{brand.name}}

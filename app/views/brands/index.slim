@@ -1,0 +1,22 @@
+- page_headers_text('gsmarena.com', 'GSM phone reviews, news, opinions, votes, manuals and more...')
+
+.row
+  .col-md-12
+    .nav-tabs-custom
+      ul.nav.nav-tabs
+        li.active
+          a data-toggle="tab" href="#tab_1"  Выбор телефона
+        li
+          a data-toggle="tab" href="#tab_2"  Поиск по строке
+      .tab-content
+        #tab_1.tab-pane.active
+          br
+          .row
+            = render 'brands'
+            = render 'phones'
+            = render 'phone'
+        #tab_2.tab-pane
+          br
+          .row
+            = render 'search'
+
