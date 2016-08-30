@@ -2,6 +2,7 @@ module Resource
   extend ActiveSupport::Concern
 
   included do
+    inherit_resources
     rescue_from Exception, with: :rescue_render_json
 
     respond_to :json
