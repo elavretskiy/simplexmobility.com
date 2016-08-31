@@ -5,15 +5,13 @@ class Gsmarena::Settings
   @pagination_css = '.nav-pages'
   @phones_css = '.makers'
   @phone_css = '.main-review'
-  @table_class = 'table table-bordered'
 
   @search_page = 'http://www.gsmarena.com/results.php3?sQuickSearch=yes&sName='
   @search_css = '.search-results'
 
   class << self
     attr_accessor :root_page, :brands_page, :brands_css, :pagination_css,
-                  :phones_css, :phone_css, :table_class, :search_page,
-                  :search_css
+                  :phones_css, :phone_css, :search_page, :search_css
 
     def load(page, url = nil)
       case page

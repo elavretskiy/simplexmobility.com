@@ -41,8 +41,9 @@ class Gsmarena::Parser
     @html.search('.social-share', '#user-comments', '.sub-footer', '.note',
                  '.specs-spotlight-features').remove
     html_to_system_style
-    @html.search('table').each { |t| t['class'] = @settings.table_class }
-    @html.search('.main-review').each { |t| t['class'] = 'table-responsive' }
+    @html.search('table').each { |t| t['class'] = 'table table-bordered table-hover' }
+    tables = @html.css('table')
+    tables.wrap("<div class='table-responsive'></div>")
     encode_text(@html.to_html)
   end
 
