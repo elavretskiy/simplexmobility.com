@@ -5,7 +5,7 @@ class Gsmarena::Settings
   @pagination_css = '.nav-pages'
   @phones_css = '.makers'
   @phone_css = '.main-review'
-  @table_class = 'table table-bordered table-responsive'
+  @table_class = 'table table-bordered'
 
   @search_page = 'http://www.gsmarena.com/results.php3?sQuickSearch=yes&sName='
   @search_css = '.search-results'

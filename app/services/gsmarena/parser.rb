@@ -42,6 +42,7 @@ class Gsmarena::Parser
                  '.specs-spotlight-features').remove
     html_to_system_style
     @html.search('table').each { |t| t['class'] = @settings.table_class }
+    @html.search('.main-review').each { |t| t['class'] = 'table-responsive' }
     encode_text(@html.to_html)
   end
 
