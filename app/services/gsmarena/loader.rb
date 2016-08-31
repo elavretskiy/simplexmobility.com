@@ -19,10 +19,6 @@ class Gsmarena::Loader
     @page = page
   end
 
-  def reset_session
-    @session.try(:reset!)
-  end
-
   def load(page = nil, url = nil)
     load_html_for(page || @page, url)
   end
