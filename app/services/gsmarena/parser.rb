@@ -38,7 +38,7 @@ class Gsmarena::Parser
   end
 
   def parse_phone
-    @html.search('.article-info-line', '#user-comments', '.sub-footer', '.note',
+    @html.search('.social-share', '#user-comments', '.sub-footer', '.note',
                  '.specs-spotlight-features').remove
     html_to_system_style
     @html.search('table').each { |t| t['class'] = @settings.table_class }

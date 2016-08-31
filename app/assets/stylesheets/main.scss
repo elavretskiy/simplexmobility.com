@@ -67,4 +67,50 @@
 
 .specs-photo-main {
   margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.article-info-meta li {
+  float: right;
+  line-height: 44px;
+  position: relative;
+  z-index: 10;
+  list-style-type: none;
+}
+
+.article-info-line.page-specs.light {
+  background: #bbb;
+  margin-bottom: 20px;
+}
+
+.page-specs .article-info-meta-link a {
+  text-shadow: none;
+}
+
+.article-info-meta-link a {
+  display: block;
+  padding: 0 10px;
+  min-width: 140px;
+  font: 400 14px/44px Google-Oswald, Arial, sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+}
+
+.article-info-line {
+  height: 45px;
+  left: 0;
+  position: relative;
+  width: 100%;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.specs-phone-name-title {
+  float: left;
+  padding-left: 10px;
+  font: 300 28px/47px 'Google-Oswald', Arial, sans-serif;
+  text-shadow: none;
+  color: #fff;
+  margin-top: -2px;
 }
