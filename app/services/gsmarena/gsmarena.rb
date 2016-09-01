@@ -20,24 +20,24 @@ class Gsmarena::Gsmarena
   end
 
   def parse_pagination
-    html = @loader.load(@page, @urls)
+    html = @loader.load(@urls)
     [@urls] + Gsmarena::Parser.new(html, @page).parse
   end
 
   def parse_phones
     @urls.map do |url|
-      html = @loader.load(@page, url)
+      html = @loader.load(url)
       Gsmarena::Parser.new(html, @page).parse
     end.flatten
   end
 
   def parse_phone
-    html = @loader.load(@page, @urls)
+    html = @loader.load(@urls)
     Gsmarena::Parser.new(html, @page).parse
   end
 
   def parse_search
-    html = @loader.load(@page, @urls)
+    html = @loader.load(@urls)
     Gsmarena::Parser.new(html, @page).parse
   end
 end

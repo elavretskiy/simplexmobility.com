@@ -19,14 +19,14 @@ class Gsmarena::Loader
     @page = page
   end
 
-  def load(page = nil, url = nil)
-    load_html_for(page || @page, url)
+  def load(url = nil)
+    load_html_for(url)
   end
 
   private
 
-  def load_html_for(page, url = nil)
-    params = @settings.load(page, url)
+  def load_html_for(url = nil)
+    params = @settings.load(@page, url)
     page = Nokogiri::HTML(open(params[:url]))
     page.css(params[:css])
   end
