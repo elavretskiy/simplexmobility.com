@@ -10,8 +10,8 @@ class Gsmarena::Settings
   @search_css = '.search-results'
 
   class << self
-    attr_accessor :root_page, :brands_page, :brands_css, :pagination_css,
-                  :phones_css, :phone_css, :search_page, :search_css
+    attr_reader :root_page, :brands_page, :brands_css, :pagination_css,
+                :phones_css, :phone_css, :search_page, :search_css
 
     def load(page, url = nil)
       case page

@@ -1,8 +1,7 @@
 class Gsmarena::Gsmarena
-  def initialize(page, urls = nil)
+  def initialize(page, *urls)
     @page = page
-    @urls = urls
-    @loader = Gsmarena::Loader.new(@page)
+    @urls = urls.flatten
   end
 
   def parse
@@ -13,31 +12,30 @@ class Gsmarena::Gsmarena
 
   private
 
+  def parse_page
+    @urls.present? ? parse_urls : parse_url
+  end
+
+  def parse_urls
+    @urls.map { |url| parse_url(url) }.flatten
+  end
+
+  def parse_url(url = nil)
+    html = Gsmarena::Loader.new(@page, url).load
+    Gsmarena::Parser.new(html, @page).parse
+  end
+
   def parse_brands
-    html = @loader.load
-    brands = Gsmarena::Parser.new(html, @page).parse
+    brands = parse_page
     Brand.create_for(brands)
   end
 
   def parse_pagination
-    html = @loader.load(@urls)
-    [@urls] + Gsmarena::Parser.new(html, @page).parse
+    urls = parse_page
+    @urls + urls
   end
 
-  def parse_phones
-    @urls.map do |url|
-      html = @loader.load(url)
-      Gsmarena::Parser.new(html, @page).parse
-    end.flatten
-  end
-
-  def parse_phone
-    html = @loader.load(@urls)
-    Gsmarena::Parser.new(html, @page).parse
-  end
-
-  def parse_search
-    html = @loader.load(@urls)
-    Gsmarena::Parser.new(html, @page).parse
+  def method_missing(method_sym)
+    parse_page
   end
 end

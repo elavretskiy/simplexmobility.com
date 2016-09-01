@@ -7,7 +7,7 @@ require 'open-uri'
 class Gsmarena::Loader
   include Capybara::DSL
 
-  def initialize(page)
+  def initialize(page, url = nil)
     Capybara.register_driver :poltergeist do |app|
       Capybara::Poltergeist::Driver.new(app, debug: false)
     end
@@ -17,22 +17,23 @@ class Gsmarena::Loader
 
     @settings = Gsmarena::Settings
     @page = page
+    @url = url
   end
 
-  def load(url = nil)
-    load_html_for(url)
+  def load
+    load_html_for
   end
 
   private
 
-  def load_html_for(url = nil)
-    params = @settings.load(@page, url)
+  def load_html_for
+    params = @settings.load(@page, @url)
     page = Nokogiri::HTML(open(params[:url]))
     page.css(params[:css])
   end
 
-  def load_ajax_for(page, url = nil)
-    params = @settings.load(page, url)
+  def load_ajax_for(page)
+    params = @settings.load(page, @url)
     page = scrape do |page|
       visit params[:url]
       wait_for_ajax
