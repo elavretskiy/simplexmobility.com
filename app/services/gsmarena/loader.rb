@@ -3,6 +3,7 @@ require 'capybara'
 require 'capybara/dsl'
 require 'nokogiri'
 require 'open-uri'
+require 'webrick/httputils'
 
 class Gsmarena::Loader
   include Capybara::DSL
@@ -28,7 +29,10 @@ class Gsmarena::Loader
 
   def load_html_for
     params = @settings.load(@page, @url)
-    page = Nokogiri::HTML(open(params[:url]))
+    url = params[:url]
+    url.force_encoding('binary')
+    url = WEBrick::HTTPUtils.escape(url)
+    page = Nokogiri::HTML(open(url))
     page.css(params[:css])
   end
 

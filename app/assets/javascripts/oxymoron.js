@@ -1,1 +1,915 @@
-(function(){angular.module("oxymoron.config.http",[]).config(["$httpProvider","$locationProvider","$stateProvider",function(e){e.defaults.headers.common["X-Requested-With"]="AngularXMLHttpRequest",e.defaults.paramSerializer="$httpParamSerializerJQLike"}]),angular.module("oxymoron.config.states",[]).config(["$locationProvider","$stateProvider","$urlRouterProvider","$urlMatcherFactoryProvider",function(e,o,r){e.html5Mode(!0).hashPrefix("!"),r.rule(function(e,r){var t=r.path(),n="/"===t[t.length-1];if(o.oxymoron_location=r,n){var a=t.substr(0,t.length-1);return a}});var t=function(e,o){return function(r,t){try{var r=angular.isArray(r)?r:[r];r.indexOf(e)!=-1&&t(o)}catch(e){console.error(e)}}};o.rails=function(){return o.state("root_path",{url:"/",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.root_path(e)},reloadOnSearch:!0,controller:"BrandsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("index",e)}]}}).state("brands_path",{url:"/brands",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.brands_path(e)},reloadOnSearch:!0,controller:"BrandsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("index",e)}]}}).state("new_brand_path",{url:"/brands/new",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.new_brand_path(e)},reloadOnSearch:!0,controller:"BrandsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("new",e)}]}}).state("edit_brand_path",{url:"/brands/:id/edit",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.edit_brand_path(e)},reloadOnSearch:!0,controller:"BrandsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("edit",e)}]}}).state("brand_path",{url:"/brands/:id",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.brand_path(e)},reloadOnSearch:!0,controller:"BrandsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("show",e)}]}}).state("phones_path",{url:"/phones",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.phones_path(e)},reloadOnSearch:!0,controller:"PhonesCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("index",e)}]}}).state("new_phone_path",{url:"/phones/new",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.new_phone_path(e)},reloadOnSearch:!0,controller:"PhonesCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("new",e)}]}}).state("edit_phone_path",{url:"/phones/:id/edit",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.edit_phone_path(e)},reloadOnSearch:!0,controller:"PhonesCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("edit",e)}]}}).state("phone_path",{url:"/phones/:id",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.phone_path(e)},reloadOnSearch:!0,controller:"PhonesCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("show",e)}]}}).state("search_index_path",{url:"/search",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.search_index_path(e)},reloadOnSearch:!0,controller:"SearchCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("index",e)}]}}).state("new_search_path",{url:"/search/new",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.new_search_path(e)},reloadOnSearch:!0,controller:"SearchCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("new",e)}]}}).state("edit_search_path",{url:"/search/:id/edit",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.edit_search_path(e)},reloadOnSearch:!0,controller:"SearchCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("edit",e)}]}}).state("search_path",{url:"/search/:id",templateUrl:function(e){if(e["ng-view"]="",o.oxymoron_location){var r=_.omit(o.oxymoron_location.search(),_.keys(e));e=angular.extend(r,e)}return Routes.search_path(e)},reloadOnSearch:!0,controller:"SearchCtrl as ctrl",resolve:{action:["$stateParams",function(e){return t("show",e)}]}}),o}}]).config(["$provide",function(e){e.decorator("$state",["$delegate",function(e){var o=e;o.baseGo=o.go;var r=function(e,r,t){if(o.defaultParams){var n=angular.copy(o.defaultParams);r=angular.extend(n,r)}o.baseGo(e,r,t)};return o.go=r,e}])}]),angular.module("oxymoron.config.debug",[]).config(["$compileProvider",function(e){e.debugInfoEnabled(!1)}]),angular.module("oxymoron.config",["oxymoron.config.http","oxymoron.config.states","oxymoron.config.debug"]),angular.module("oxymoron.services.interceptor",[]).factory("httpInterceptor",["$q","$rootScope","$log",function(e,o){return{request:function(r){return o.$broadcast("loading:progress"),r||e.when(r)},response:function(r){return o.$broadcast("loading:finish",r),r||e.when(r)},responseError:function(r){return o.$broadcast("loading:error",r),e.reject(r)}}}]).config(["$httpProvider",function(e){e.interceptors.push("httpInterceptor")}]),angular.module("oxymoron.services.resources",[]).factory("resourceDecorator",[function(){return function(e){return e}}]).factory("Brand",["$resource","resourceDecorator",function(e,o){return o(e("/brands/:id.json",{id:"@id"},{"new":{method:"GET",url:"/brands/:id/new.json"},edit:{method:"GET",url:"/brands/:id/edit.json"},update:{method:"PUT"},create:{method:"POST"},destroy:{method:"DELETE"}}))}]).factory("Phone",["$resource","resourceDecorator",function(e,o){return o(e("/phones/:id.json",{id:"@id"},{"new":{method:"GET",url:"/phones/:id/new.json"},edit:{method:"GET",url:"/phones/:id/edit.json"},update:{method:"PUT"},create:{method:"POST"},destroy:{method:"DELETE"}}))}]).factory("Search",["$resource","resourceDecorator",function(e,o){return o(e("/search/:id.json",{id:"@id"},{"new":{method:"GET",url:"/search/:id/new.json"},edit:{method:"GET",url:"/search/:id/edit.json"},update:{method:"PUT"},create:{method:"POST"},destroy:{method:"DELETE"}}))}]),angular.module("oxymoron.services.sign",[]).service("Sign",["$http",function(e){var o=this;o.out=function(){e["delete"](Routes.destroy_user_session_path()).success(function(){window.location="/"})},o["in"]=function(o){e.post(Routes.user_session_path(),{user:o}).success(function(){window.location.reload()})},o.up=function(o){e.post(Routes.user_registration_path(),{user:o}).success(function(){window.location.reload()})}}]),angular.module("oxymoron.services.validate",[]).factory("Validate",[function(){return function(e,o){try{var r=angular.element(document.querySelector('[name="'+e+'"]')).scope()[e]}catch(e){var r={}}angular.element(document.querySelectorAll(".rails-errors")).remove(),angular.forEach(r,function(e,o){0!=o.indexOf("$")&&angular.forEach(e.$error,function(o,r){e.$setValidity(r,null)})}),angular.forEach(o,function(o,t){var n=e+"["+t+"]";try{r[n]&&(r[n].$setTouched(),r[n].$setDirty(),r[n].$setValidity("server",!1)),angular.element(document.querySelector('[name="'+n+'"]')).parent().append('<div class="rails-errors" ng-messages="'+n+'.$error"><div ng-message="server">'+o[0]+"</div></div>")}catch(e){console.log(e),console.warn("Element with name "+n+" not found for validation.")}})}}]),angular.module("oxymoron.services",["oxymoron.services.interceptor","oxymoron.services.resources","oxymoron.services.sign","oxymoron.services.validate"]),angular.module("oxymoron.directives.contentFor",[]).directive("contentFor",["$compile",function(e){return{compile:function(o){var r=o.html();return{pre:function(t,n,a){var i=angular.element(document.querySelectorAll('[ng-yield="'+a.contentFor+'"]'));return"true"==i.attr("only-text")&&(r=o.text().replace(/(?:\r\n|\r|\n)/g," ")),i.html((i.attr("prefix")||"")+r+(i.attr("postfix")||"")),e(i)(t),n.remove()}}}}}]),angular.module("oxymoron.directives.fileupload",[]).directive("fileupload",["$http","$timeout","$cookies",function(e,o,r){return{scope:{fileupload:"=",ngModel:"=",hash:"=",percentCompleted:"="},restrict:"A",link:function(e,o,t){e.percentCompleted=void 0,o.bind("change",function(){var n=new FormData;angular.forEach(o[0].files,function(e){n.append("attachments[]",e)});var a=new XMLHttpRequest;a.upload.onprogress=function(o){e.$apply(function(){o.lengthComputable&&(e.percentCompleted=Math.round(o.loaded/o.total*100))})},a.onload=function(){var o=JSON.parse(this.responseText);e.$apply(function(){e.hash?(e.ngModel=e.ngModel||{},angular.forEach(o,function(o,r){e.ngModel[r]=e.ngModel[r]||[],angular.forEach(o,function(o){e.ngModel[r].push(o)})})):t.multiple?(e.ngModel=e.ngModel||[],angular.forEach(o,function(o){e.ngModel.push(o)})):e.ngModel=o[0],e.percentCompleted=void 0})},a.open("POST",e.fileupload),a.setRequestHeader("X-XSRF-Token",r.get("XSRF-TOKEN")),a.send(n),o[0].value=""})}}}]),angular.module("oxymoron.directives.checklistModel",[]).directive("checklistModel",["$parse","$compile",function(e,o){function r(e,o,r){if(angular.isArray(e))for(var t=e.length;t--;)if(r(e[t],o))return!0;return!1}function t(e,o,t){return e=angular.isArray(e)?e:[],r(e,o,t)||e.push(o),e}function n(e,o,r){if(angular.isArray(e))for(var t=e.length;t--;)if(r(e[t],o)){e.splice(t,1);break}return e}function a(a,i,c){function l(e,o){var r=d(a.$parent);angular.isFunction(h)&&(o===!0?h(a.$parent,t(r,e,g)):h(a.$parent,n(r,e,g)))}function s(e){return p&&p(a)===!1?void l(m,a[c.ngModel]):void(a[c.ngModel]=r(e,m,g))}var u=c.checklistModel;c.$set("checklistModel",null),o(i)(a),c.$set("checklistModel",u);var d=e(u),h=d.assign,f=e(c.checklistChange),p=e(c.checklistBeforeChange),m=c.checklistValue?e(c.checklistValue)(a.$parent):c.value,g=angular.equals;if(c.hasOwnProperty("checklistComparator"))if("."==c.checklistComparator[0]){var v=c.checklistComparator.substring(1);g=function(e,o){return e[v]===o[v]}}else g=e(c.checklistComparator)(a.$parent);a.$watch(c.ngModel,function(e,o){if(e!==o){if(p&&p(a)===!1)return void(a[c.ngModel]=r(d(a.$parent),m,g));l(m,e),f&&f(a)}}),angular.isFunction(a.$parent.$watchCollection)?a.$parent.$watchCollection(u,s):a.$parent.$watch(u,s,!0)}return{restrict:"A",priority:1e3,terminal:!0,scope:!0,compile:function(e,o){if(("INPUT"!==e[0].tagName||"checkbox"!==o.type)&&"MD-CHECKBOX"!==e[0].tagName&&!o.btnCheckbox)throw'checklist-model should be applied to `input[type="checkbox"]` or `md-checkbox`.';if(!o.checklistValue&&!o.value)throw"You should provide `value` or `checklist-value`.";return o.ngModel||o.$set("ngModel","checked"),a}}}]),angular.module("oxymoron.directives.clickOutside",[]).directive("clickOutside",["$document",function(e){return{restrict:"A",scope:{clickOutside:"&",clickOutsideIf:"="},link:function(o,r){var t=function(e){o.clickOutsideIf&&r!==e.target&&!r[0].contains(e.target)&&document.body.contains(e.target)&&o.$apply(function(){o.$eval(o.clickOutside)})};e.bind("click",t),o.$on("$destroy",function(){e.unbind("click",t)})}}}]),angular.module("oxymoron.directives",["oxymoron.directives.fileupload","oxymoron.directives.contentFor","oxymoron.directives.checklistModel","oxymoron.directives.clickOutside"]),angular.module("oxymoron.notifier",[]).run(["$rootScope","ngNotify","Validate","$state","$http","$location",function(e,o,r,t,n,a){function i(e,n){n.data&&angular.isObject(n.data)&&(n.data.msg&&o.set(n.data.msg,e),n.data.errors&&r(n.data.form_name||n.config.data.form_name,n.data.errors),n.data.redirect_to_url?a.url(n.data.redirect_to_url):n.data.redirect_to&&t.go(n.data.redirect_to,n.data.redirect_options||{}),n.data.reload&&window.location.reload())}o.config({theme:"pure",position:"top",duration:2e3,type:"info"}),e.$on("loading:finish",function(e,o){i("success",o)}),e.$on("loading:error",function(e,o){i("error",o)})}]),angular.module("oxymoron",["ngNotify","ngCookies","ui.router","ngResource","oxymoron.directives","oxymoron.services","oxymoron.config","oxymoron.notifier"])}).call(this),function(){var e=function(){var e=this,o={root:{defaults:{},path:"/"},brands:{defaults:{},path:"/brands"},new_brand:{defaults:{},path:"/brands/new"},edit_brand:{defaults:{},path:"/brands/:id/edit"},brand:{defaults:{},path:"/brands/:id"},phones:{defaults:{},path:"/phones"},new_phone:{defaults:{},path:"/phones/new"},edit_phone:{defaults:{},path:"/phones/:id/edit"},phone:{defaults:{},path:"/phones/:id"},search_index:{defaults:{},path:"/search"},new_search:{defaults:{},path:"/search/new"},edit_search:{defaults:{},path:"/search/:id/edit"},search:{defaults:{},path:"/search/:id"}};e.defaultParams={};var r=function(e,o){var t=[];for(var n in e)if(e.hasOwnProperty(n)){var a=o?o+"["+n+"]":n,i=e[n];t.push("object"==typeof i?r(i,a):encodeURIComponent(a)+"="+encodeURIComponent(i))}return t.join("&")},t=function(e,o){var e=angular.copy(e);return delete e[o],e};angular.forEach(o,function(o,n){var a="",i=function(e){e.format&&(a+="."+e.format);var e=t(e,"format");return angular.forEach(e,function(o,r){var n=":"+r;a.search(n)!=-1&&(a=a.replace(n,o),e=t(e,r))}),Object.keys(e).length&&(a+="?"+r(e)),a};e[n+"_path"]=function(r){var r=angular.extend(angular.copy(o.defaults),r||{});a=o.path;var t=angular.copy(e.defaultParams);return i(angular.extend(t,r))},e[n+"_url"]=function(o){return window.location.origin+e[n+"_path"](o)}})};window.Routes=new e}.call(this);
+(function() {
+  angular.module("oxymoron.config.http", [])
+  .config(['$httpProvider', '$locationProvider', '$stateProvider', function($httpProvider, $locationProvider, $stateProvider) {
+    /*
+     *  Set token for AngularJS ajax methods
+    */
+    $httpProvider.defaults.headers.common['X-Requested-With'] = 'AngularXMLHttpRequest';
+    $httpProvider.defaults.paramSerializer = '$httpParamSerializerJQLike';
+  }])
+angular.module("oxymoron.config.states", [])
+  .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$urlMatcherFactoryProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
+    /*
+     *  Enable HTML5 History API
+    */
+    $locationProvider.html5Mode(true).hashPrefix('!');
+
+    /*
+     *  $stateProvider Rails
+    */
+    $urlRouterProvider.rule(function($injector, $location) {
+      var path = $location.path();
+      var hasTrailingSlash = path[path.length-1] === '/';
+
+      //for later access in tempalteUrl callback
+      $stateProvider.oxymoron_location = $location;
+
+      if(hasTrailingSlash) {
+        var newPath = path.substr(0, path.length - 1); 
+        return newPath; 
+      }
+    });
+
+    var resolve = function (action, $stateParams) {
+      return function (actionNames, callback) {
+        try {
+          var actionNames = angular.isArray(actionNames) ? actionNames : [actionNames];
+          
+          if (actionNames.indexOf(action)!=-1) {
+            callback($stateParams);
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+    $stateProvider.rails = function () {
+      $stateProvider
+      
+        .state('root_path', {
+          url: '/',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['root_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'BrandsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('brands_path', {
+          url: '/brands',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['brands_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'BrandsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('new_brand_path', {
+          url: '/brands/new',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['new_brand_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'BrandsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('new', $stateParams)
+            }]
+          }
+        })
+      
+        .state('edit_brand_path', {
+          url: '/brands/:id/edit',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['edit_brand_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'BrandsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('edit', $stateParams)
+            }]
+          }
+        })
+      
+        .state('brand_path', {
+          url: '/brands/:id',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['brand_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'BrandsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('show', $stateParams)
+            }]
+          }
+        })
+      
+        .state('phones_path', {
+          url: '/phones',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['phones_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'PhonesCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('new_phone_path', {
+          url: '/phones/new',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['new_phone_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'PhonesCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('new', $stateParams)
+            }]
+          }
+        })
+      
+        .state('edit_phone_path', {
+          url: '/phones/:id/edit',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['edit_phone_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'PhonesCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('edit', $stateParams)
+            }]
+          }
+        })
+      
+        .state('phone_path', {
+          url: '/phones/:id',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['phone_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'PhonesCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('show', $stateParams)
+            }]
+          }
+        })
+      
+        .state('search_index_path', {
+          url: '/search',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['search_index_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'SearchCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('new_search_path', {
+          url: '/search/new',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['new_search_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'SearchCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('new', $stateParams)
+            }]
+          }
+        })
+      
+        .state('edit_search_path', {
+          url: '/search/:id/edit',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['edit_search_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'SearchCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('edit', $stateParams)
+            }]
+          }
+        })
+      
+        .state('search_path', {
+          url: '/search/:id',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['search_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'SearchCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('show', $stateParams)
+            }]
+          }
+        })
+      
+        .state('rails_info_properties_path', {
+          url: '/rails/info/properties',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['rails_info_properties_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'RailsInfoCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('properties', $stateParams)
+            }]
+          }
+        })
+      
+        .state('rails_info_routes_path', {
+          url: '/rails/info/routes',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['rails_info_routes_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'RailsInfoCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('routes', $stateParams)
+            }]
+          }
+        })
+      
+        .state('rails_info_path', {
+          url: '/rails/info',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['rails_info_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'RailsInfoCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('rails_mailers_path', {
+          url: '/rails/mailers',
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            if ($stateProvider.oxymoron_location) {
+              var query = _.omit($stateProvider.oxymoron_location.search(), _.keys(params));
+              params = angular.extend(query, params); 
+            }
+
+            return Routes['rails_mailers_path'](params);
+          },
+          reloadOnSearch: true,
+          controller: 'RailsMailersCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+      return $stateProvider;
+    }
+  }])
+
+  .config(['$provide',
+    function($provide) {
+      $provide.decorator('$state', ['$delegate', function($delegate) {
+        var state = $delegate;
+        state.baseGo = state.go;
+
+        var go = function(to, params, options) {
+          if (state.defaultParams) {
+            var defaultParams = angular.copy(state.defaultParams);
+            params = angular.extend(defaultParams, params);
+          }
+
+          state.baseGo(to, params, options);
+        };
+        state.go = go;
+
+        return $delegate;
+      }]);
+    }
+  ])
+angular.module("oxymoron.config.debug", [])
+.config(['$compileProvider', function ($compileProvider) {
+  $compileProvider.debugInfoEnabled(true);
+}]);
+
+angular.module("oxymoron.config", ['oxymoron.config.http', 'oxymoron.config.states', 'oxymoron.config.debug'])
+
+  angular.module("oxymoron.services.interceptor", [])
+  .factory('httpInterceptor', ['$q', '$rootScope', '$log', function ($q, $rootScope, $log) {
+    return {
+      request: function (config) {
+        $rootScope.$broadcast('loading:progress');
+        return config || $q.when(config);
+      },
+      response: function (response) {
+        $rootScope.$broadcast('loading:finish', response);
+        return response || $q.when(response);
+      },
+      responseError: function (response) {
+        $rootScope.$broadcast('loading:error', response);
+        return $q.reject(response);
+      }
+    };
+  }])
+  .config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.interceptors.push('httpInterceptor');
+  }])
+angular.module("oxymoron.services.resources", [])
+  .factory('resourceDecorator', [function () {
+    return function(resource) {
+      return resource;
+    };
+  }])
+
+  
+    .factory('Brand', ['$resource', 'resourceDecorator', function ($resource, resourceDecorator) {
+      return resourceDecorator($resource('/brands/:id.json', {"id":"@id"}, {"new":{"method":"GET","url":"/brands/:id/new.json"},"edit":{"method":"GET","url":"/brands/:id/edit.json"},"update":{"method":"PUT"},"create":{"method":"POST"},"destroy":{"method":"DELETE"}}));
+    }])
+  
+    .factory('Phone', ['$resource', 'resourceDecorator', function ($resource, resourceDecorator) {
+      return resourceDecorator($resource('/phones/:id.json', {"id":"@id"}, {"new":{"method":"GET","url":"/phones/:id/new.json"},"edit":{"method":"GET","url":"/phones/:id/edit.json"},"update":{"method":"PUT"},"create":{"method":"POST"},"destroy":{"method":"DELETE"}}));
+    }])
+  
+    .factory('Search', ['$resource', 'resourceDecorator', function ($resource, resourceDecorator) {
+      return resourceDecorator($resource('/search/:id.json', {"id":"@id"}, {"new":{"method":"GET","url":"/search/:id/new.json"},"edit":{"method":"GET","url":"/search/:id/edit.json"},"update":{"method":"PUT"},"create":{"method":"POST"},"destroy":{"method":"DELETE"}}));
+    }])
+  
+angular.module("oxymoron.services.sign", [])
+  .service('Sign', ['$http', function ($http) {
+    var Sign = this;
+
+    Sign.out = function () {
+      $http.delete(Routes.destroy_user_session_path())
+        .success(function () {
+          window.location = "/";
+        })
+    }
+
+    Sign.in = function (form) {
+      $http.post(Routes.user_session_path(), {user: form})
+        .success(function () {
+          window.location.reload();
+        })
+    }
+
+    Sign.up = function (form) {
+      $http.post(Routes.user_registration_path(), {user: form})
+        .success(function () {
+          window.location.reload();
+        })
+    }
+  }])
+angular.module("oxymoron.services.validate", [])
+  .factory('Validate', [function(){
+    return function (form, errors){
+      try {
+        var $form = angular.element(document.querySelector('[name="'+form+'"]')).scope()[form];
+      } catch(e) {
+        var $form = {};
+      }
+
+      angular
+        .element(document.querySelectorAll('.rails-errors')).remove();
+
+      angular.forEach($form, function(ctrl, name) {
+        if (name.indexOf('$') != 0) {
+          angular.forEach(ctrl.$error, function(value, name) {
+            ctrl.$setValidity(name, null);
+          });
+        }
+      });
+
+
+      angular.forEach(errors, function(errors_array, key) {
+        var form_key = form+'['+key+']';
+        try {
+          if ($form[form_key]) {
+            $form[form_key].$setTouched();
+            $form[form_key].$setDirty();
+            $form[form_key].$setValidity('server', false);
+          }
+          
+          angular
+            .element(document.querySelector('[name="'+form_key+'"]'))
+            .parent()
+            .append('<div class="rails-errors" ng-messages="'+form_key+'.$error"><div ng-message="server">'+errors_array[0]+'</div></div>')
+        } catch(e) {
+          console.log(e)
+          console.warn('Element with name ' + form_key + ' not found for validation.')
+        }
+      });
+    };
+  }])
+
+angular.module("oxymoron.services", ["oxymoron.services.interceptor", "oxymoron.services.resources", "oxymoron.services.sign", "oxymoron.services.validate"])
+  angular.module("oxymoron.directives.contentFor", [])
+  .directive("contentFor", [
+    "$compile", function($compile) {
+      return {
+        compile: function(el, attrs, transclude) {
+          var template = el.html();
+
+          return {
+            pre: function(scope, iElement, iAttrs, controller) {
+              var DOMElements = angular.element(document.querySelectorAll('[ng-yield="'+iAttrs.contentFor+'"]'));
+              if (DOMElements.attr("only-text") == "true") {
+                template = el.text().replace(/(?:\r\n|\r|\n)/g, ' ');
+              }
+              DOMElements.html((DOMElements.attr("prefix") || "") + template + (DOMElements.attr("postfix") || ""))
+              $compile(DOMElements)(scope);
+
+              
+              return iElement.remove();
+            }
+          };
+        }
+      };
+    }
+  ])
+angular.module("oxymoron.directives.fileupload", [])
+  .directive('fileupload', ['$http', '$timeout', '$cookies', function ($http, $timeout, $cookies) {
+    return {
+      scope: {
+        fileupload: "=",
+        ngModel: "=",
+        hash: "=",
+        percentCompleted: "="
+      },
+      restrict: 'A',
+      link: function($scope, element, attrs) {
+        $scope.percentCompleted = undefined;
+
+        element.bind('change', function(){
+          var fd = new FormData();
+
+          angular.forEach(element[0].files, function (file) {
+            fd.append("attachments[]", file);
+          })
+
+          var xhr = new XMLHttpRequest;
+
+          xhr.upload.onprogress = function(e) {
+              // Event listener for when the file is uploading
+              $scope.$apply(function() {
+                  var percentCompleted;
+                  if (e.lengthComputable) {
+                      $scope.percentCompleted = Math.round(e.loaded / e.total * 100);
+                  }
+              });
+          };
+
+          xhr.onload = function() {
+              var res = JSON.parse(this.responseText)
+
+              $scope.$apply(function() {
+                if (!$scope.hash) {
+                  if (attrs.multiple) {
+                    $scope.ngModel = $scope.ngModel || [];
+                    angular.forEach(res, function (attachment) {
+                      $scope.ngModel.push(attachment);
+                    });
+                  } else {
+                    $scope.ngModel = res[0];
+                  }
+                } else {
+                  $scope.ngModel = $scope.ngModel || {};
+                  angular.forEach(res, function(value, key) {
+                    $scope.ngModel[key] = $scope.ngModel[key] || [];
+                    angular.forEach(value, function (attachment) {
+                      $scope.ngModel[key].push(attachment);
+                    });
+                  });
+                }
+
+                $scope.percentCompleted = undefined;
+              });
+          };
+
+
+          xhr.open('POST', $scope.fileupload);
+          xhr.setRequestHeader('X-XSRF-Token', $cookies.get('XSRF-TOKEN'));
+          xhr.send(fd);
+          element[0].value = '';
+        })
+      }
+    }
+  }])
+angular.module("oxymoron.directives.checklistModel", [])
+  .directive('checklistModel', ['$parse', '$compile', function($parse, $compile) {
+    // contains
+    function contains(arr, item, comparator) {
+      if (angular.isArray(arr)) {
+        for (var i = arr.length; i--;) {
+          if (comparator(arr[i], item)) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    // add
+    function add(arr, item, comparator) {
+      arr = angular.isArray(arr) ? arr : [];
+        if(!contains(arr, item, comparator)) {
+            arr.push(item);
+        }
+      return arr;
+    }  
+
+    // remove
+    function remove(arr, item, comparator) {
+      if (angular.isArray(arr)) {
+        for (var i = arr.length; i--;) {
+          if (comparator(arr[i], item)) {
+            arr.splice(i, 1);
+            break;
+          }
+        }
+      }
+      return arr;
+    }
+
+    // http://stackoverflow.com/a/19228302/1458162
+    function postLinkFn(scope, elem, attrs) {
+       // exclude recursion, but still keep the model
+      var checklistModel = attrs.checklistModel;
+      attrs.$set("checklistModel", null);
+      // compile with `ng-model` pointing to `checked`
+      $compile(elem)(scope);
+      attrs.$set("checklistModel", checklistModel);
+
+      // getter / setter for original model
+      var getter = $parse(checklistModel);
+      var setter = getter.assign;
+      var checklistChange = $parse(attrs.checklistChange);
+      var checklistBeforeChange = $parse(attrs.checklistBeforeChange);
+
+      // value added to list
+      var value = attrs.checklistValue ? $parse(attrs.checklistValue)(scope.$parent) : attrs.value;
+
+
+      var comparator = angular.equals;
+
+      if (attrs.hasOwnProperty('checklistComparator')){
+        if (attrs.checklistComparator[0] == '.') {
+          var comparatorExpression = attrs.checklistComparator.substring(1);
+          comparator = function (a, b) {
+            return a[comparatorExpression] === b[comparatorExpression];
+          };
+          
+        } else {
+          comparator = $parse(attrs.checklistComparator)(scope.$parent);
+        }
+      }
+
+      // watch UI checked change
+      scope.$watch(attrs.ngModel, function(newValue, oldValue) {
+        if (newValue === oldValue) { 
+          return;
+        } 
+
+        if (checklistBeforeChange && (checklistBeforeChange(scope) === false)) {
+          scope[attrs.ngModel] = contains(getter(scope.$parent), value, comparator);
+          return;
+        }
+
+        setValueInChecklistModel(value, newValue);
+
+        if (checklistChange) {
+          checklistChange(scope);
+        }
+      });
+
+      function setValueInChecklistModel(value, checked) {
+        var current = getter(scope.$parent);
+        if (angular.isFunction(setter)) {
+          if (checked === true) {
+            setter(scope.$parent, add(current, value, comparator));
+          } else {
+            setter(scope.$parent, remove(current, value, comparator));
+          }
+        }
+        
+      }
+
+      // declare one function to be used for both $watch functions
+      function setChecked(newArr, oldArr) {
+        if (checklistBeforeChange && (checklistBeforeChange(scope) === false)) {
+          setValueInChecklistModel(value, scope[attrs.ngModel]);
+          return;
+        }
+        scope[attrs.ngModel] = contains(newArr, value, comparator);
+      }
+
+      // watch original model change
+      // use the faster $watchCollection method if it's available
+      if (angular.isFunction(scope.$parent.$watchCollection)) {
+          scope.$parent.$watchCollection(checklistModel, setChecked);
+      } else {
+          scope.$parent.$watch(checklistModel, setChecked, true);
+      }
+    }
+
+    return {
+      restrict: 'A',
+      priority: 1000,
+      terminal: true,
+      scope: true,
+      compile: function(tElement, tAttrs) {
+        if ((tElement[0].tagName !== 'INPUT' || tAttrs.type !== 'checkbox') && (tElement[0].tagName !== 'MD-CHECKBOX') && (!tAttrs.btnCheckbox)) {
+          throw 'checklist-model should be applied to `input[type="checkbox"]` or `md-checkbox`.';
+        }
+
+        if (!tAttrs.checklistValue && !tAttrs.value) {
+          throw 'You should provide `value` or `checklist-value`.';
+        }
+
+        // by default ngModel is 'checked', so we set it if not specified
+        if (!tAttrs.ngModel) {
+          // local scope var storing individual checkbox model
+          tAttrs.$set("ngModel", "checked");
+        }
+
+        return postLinkFn;
+      }
+    };
+  }]);
+angular.module("oxymoron.directives.clickOutside", [])
+  .directive('clickOutside', ['$document', function ($document) {
+    return {
+      restrict: 'A',
+      scope: {
+        clickOutside: '&',
+        clickOutsideIf: '='
+      },
+      link: function (scope, el, attr) {
+        var handler = function (e) {
+          if (scope.clickOutsideIf && el !== e.target && !el[0].contains(e.target) && document.body.contains(e.target)) {
+            scope.$apply(function () {
+                scope.$eval(scope.clickOutside);
+            });
+          }
+        }
+
+        $document.bind('click', handler);
+
+        scope.$on('$destroy', function () {
+          $document.unbind('click', handler)
+        })
+      }
+    }
+  }])
+
+angular.module("oxymoron.directives", ['oxymoron.directives.fileupload', 'oxymoron.directives.contentFor', 'oxymoron.directives.checklistModel', 'oxymoron.directives.clickOutside'])
+  angular.module("oxymoron.notifier", [])
+  .run(['$rootScope', 'ngNotify', 'Validate', '$state', '$http', '$location', function ($rootScope, ngNotify, Validate, $state, $http, $location) {
+    ngNotify.config({
+        theme: 'pure',
+        position: 'top',
+        duration: 2000,
+        type: 'info'
+    });
+
+    $rootScope.$on('loading:finish', function (h, res) {
+      callback('success', res)
+    })
+
+    $rootScope.$on('loading:error', function (h, res, p) {
+      callback('error', res)
+    })
+
+    function callback (type, res) {
+      if (res.data && angular.isObject(res.data)) {
+        if (res.data.msg) {
+          ngNotify.set(res.data.msg, type);
+        }
+
+        if (res.data.errors) {
+          Validate(res.data.form_name || res.config.data.form_name, res.data.errors)
+        }
+
+        if (res.data.redirect_to_url) {
+          $location.url(res.data.redirect_to_url);
+        } else if (res.data.redirect_to) {
+          $state.go(res.data.redirect_to, res.data.redirect_options || {});
+        }
+
+        if (res.data.reload) {
+          window.location.reload();
+        }
+      }
+    }
+  }])
+
+  angular.module('oxymoron', ['ngNotify', 'ngCookies', 'ui.router', 'ngResource', 'oxymoron.directives', 'oxymoron.services', 'oxymoron.config', 'oxymoron.notifier'])
+
+}).call(this);
+
+(function () {
+  var Routes = function () {
+    var self = this,
+        routes = {"root":{"defaults":{},"path":"/"},"brands":{"defaults":{},"path":"/brands"},"new_brand":{"defaults":{},"path":"/brands/new"},"edit_brand":{"defaults":{},"path":"/brands/:id/edit"},"brand":{"defaults":{},"path":"/brands/:id"},"phones":{"defaults":{},"path":"/phones"},"new_phone":{"defaults":{},"path":"/phones/new"},"edit_phone":{"defaults":{},"path":"/phones/:id/edit"},"phone":{"defaults":{},"path":"/phones/:id"},"search_index":{"defaults":{},"path":"/search"},"new_search":{"defaults":{},"path":"/search/new"},"edit_search":{"defaults":{},"path":"/search/:id/edit"},"search":{"defaults":{},"path":"/search/:id"},"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"}};
+
+    self.defaultParams = {}
+
+    var serialize = function(obj, prefix) {
+      var str = [];
+      for(var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+          var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+          str.push(typeof v == "object" ?
+            serialize(v, k) :
+            encodeURIComponent(k) + "=" + encodeURIComponent(v));
+        }
+      }
+      return str.join("&");
+    }
+
+    var omit = function (hash, key) {
+      var hash = angular.copy(hash);
+      delete hash[key]
+      return hash
+    }
+
+
+    angular.forEach(routes, function (val, key) {
+      var result = '';
+
+      var gsub = function(params) {
+        if (params.format) {
+          result += '.' + params.format
+        }
+
+        var params = omit(params, 'format');
+        angular.forEach(params, function (v, k) {
+          var subst = ':' + k;
+          if (result.search(subst) != -1) {
+            result = result.replace(subst, v);
+            params = omit(params, k);
+          }
+        })
+        
+        if (Object.keys(params).length)
+          result += '?'+serialize(params)
+
+        return result;
+      }
+
+      self[key+'_path'] = function (params) {
+        var params = angular.extend(angular.copy(val.defaults), params || {});
+        result = val.path;
+        var defaultParams = angular.copy(self.defaultParams);
+        return gsub(angular.extend(defaultParams, params));
+      }
+
+      self[key+'_url'] = function (params) {
+        return window.location.origin + self[key+'_path'](params)
+      }
+    })
+  }
+
+  window.Routes = new Routes();
+
+}).call(this)
